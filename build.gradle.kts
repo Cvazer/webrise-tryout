@@ -16,6 +16,9 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.liquibase:liquibase-core")
+    runtimeOnly("org.postgresql:postgresql:42.7.5")
 
     //В качестве дискавери сервиса использую Consul.
     implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
