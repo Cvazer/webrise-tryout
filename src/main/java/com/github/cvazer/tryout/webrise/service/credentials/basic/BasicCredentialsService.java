@@ -2,26 +2,37 @@ package com.github.cvazer.tryout.webrise.service.credentials.basic;
 
 import com.github.cvazer.tryout.webrise.dao.entity.UserEntity;
 import com.github.cvazer.tryout.webrise.dao.repo.BasicCredentialsRepo;
-import com.github.cvazer.tryout.webrise.service.UserService;
 import com.github.cvazer.tryout.webrise.service.ValidationUtils;
 import com.github.cvazer.tryout.webrise.service.credentials.BadCredentialsException;
 import com.github.cvazer.tryout.webrise.service.credentials.CredentialsService;
+import com.github.cvazer.tryout.webrise.service.users.UserService;
 import jakarta.validation.Validator;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class BasicCredentialsService implements CredentialsService<BasicCredentials> {
     private final UserService userService;
     private final Validator validator;
     private final BasicCredentialsMapper mapper;
     private final BasicCredentialsRepo repo;
     private final PasswordEncoder passwordEncoder;
+
+    public BasicCredentialsService(@Lazy UserService userService,
+                                   Validator validator,
+                                   BasicCredentialsMapper mapper,
+                                   BasicCredentialsRepo repo,
+                                   PasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.validator = validator;
+        this.mapper = mapper;
+        this.repo = repo;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     @Transactional
