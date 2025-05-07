@@ -1,4 +1,4 @@
 create table users (
-    id bigint not null generated always as identity,
+    id bigint not null primary key generated always as identity,
     display_name text not null
 );

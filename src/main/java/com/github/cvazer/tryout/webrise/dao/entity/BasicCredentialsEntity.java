@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import static jakarta.persistence.CascadeType.*;
+
 @Entity
 @Getter
 @Setter
@@ -17,9 +19,11 @@ public class BasicCredentialsEntity {
     private String password;
 
     @Id
-    private long userId;
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Long userId;
 
-    @ManyToOne(optional = false)
+    @MapsId
+    @ManyToOne(cascade = {PERSIST, REFRESH, MERGE}, optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
 

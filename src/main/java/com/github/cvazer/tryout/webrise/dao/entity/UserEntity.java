@@ -1,8 +1,6 @@
 package com.github.cvazer.tryout.webrise.dao.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +16,10 @@ public class UserEntity {
     private String displayName;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public UserEntity(String displayName) {
+        this.displayName = displayName;
+    }
 }
