@@ -1,4 +1,4 @@
-package com.github.cvazer.tryout.webrise.service;
+package com.github.cvazer.tryout.webrise.service.subscriptions;
 
 import com.github.cvazer.tryout.webrise.dao.entity.ServiceEntity;
 import com.github.cvazer.tryout.webrise.dao.entity.SubscriptionEntity;
@@ -19,5 +19,11 @@ public interface SubscriptionService {
      * @return {@link SubscriptionEntity} corresponding to given user and service or empty optional
      */
     Optional<SubscriptionEntity> getSubscription(UserEntity user, String serviceId);
+
+    /**
+     * Only returns subscription if it exists AND it is in "Active" status
+     * @return {@link SubscriptionEntity} corresponding to given user and service or empty optional
+     */
+    Optional<SubscriptionEntity> getActiveSubscription(UserEntity user, String serviceId);
 
 }

@@ -66,5 +66,10 @@ public class BasicCredentialsService implements CredentialsService<BasicCredenti
         return entity.getUser();
     }
 
+    @Override
+    public void deleteUserCredentials(UserEntity user) {
+        repo.deleteById(user.getId());
+    }
+
 
 }

@@ -20,4 +20,10 @@ public interface CredentialsService<T> {
      * @throws BadCredentialsException when user is missing or password is incorrect
      */
     UserEntity authenticateCredentials(T credentials) throws BadCredentialsException;
+
+    /**
+     * <p>Deletes credentials of specific type linked to given user</p>
+     * @param user for whom credentials would be deleted
+     */
+    void deleteUserCredentials(UserEntity user);
 }

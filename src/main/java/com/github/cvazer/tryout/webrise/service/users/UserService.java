@@ -1,4 +1,4 @@
-package com.github.cvazer.tryout.webrise.service;
+package com.github.cvazer.tryout.webrise.service.users;
 
 import com.github.cvazer.tryout.webrise.dao.entity.UserEntity;
 
@@ -17,4 +17,6 @@ public interface UserService {
      * @throws IllegalStateException when no security context or authentication exists, or it is not supported
      */
     UserEntity getCurrentUser() throws IllegalStateException;
+
+    void delete(UserEntity user);
 }
