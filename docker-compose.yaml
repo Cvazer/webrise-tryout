@@ -1,0 +1,40 @@
+services:
+  application:
+    build: .
+    ports:
+      - "8080:8080"
+    container_name: webrise-tryout-yan-f-application
+    depends_on:
+      - database
+      - consul
+    networks:
+      webrise-tryout-yan-f-network:
+        ipv4_address: 100.20.10.1
+
+  database:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    container_name: webrise-tryout-yan-f-postgresql
+    environment:
+      POSTGRES_PASSWORD: postgres
+    networks:
+      webrise-tryout-yan-f-network:
+        ipv4_address: 100.20.20.1
+
+  consul:
+    image: hashicorp/consul:1.19
+    container_name: webrise-tryout-consul
+    ports:
+      - "8500:8500"
+    networks:
+      webrise-tryout-yan-f-network:
+        ipv4_address: 100.20.0.2
+
+networks:
+  webrise-tryout-yan-f-network:
+    name: webrise-tryout-yan-f-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 100.20.0.0/16
