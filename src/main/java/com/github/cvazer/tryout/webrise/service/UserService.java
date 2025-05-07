@@ -11,4 +11,10 @@ public interface UserService {
      */
     UserEntity create(String displayName);
 
+    /**
+     * <p>Attempts to fetch user using data in
+     * {@link org.springframework.security.core.context.SecurityContextHolder}<p/>
+     * @throws IllegalStateException when no security context or authentication exists, or it is not supported
+     */
+    UserEntity getCurrentUser() throws IllegalStateException;
 }

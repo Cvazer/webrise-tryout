@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public record ApiResponse<T>(
         ErrorInfo errorInfo, @JsonInclude(JsonInclude.Include.NON_NULL) T data
 ) {
+    public ApiResponse() {
+        this(new ErrorInfo(), null);
+    }
+
     public ApiResponse(T data) {
         this(new ErrorInfo(), data);
     }

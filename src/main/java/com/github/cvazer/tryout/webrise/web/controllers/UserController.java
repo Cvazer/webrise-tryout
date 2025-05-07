@@ -5,7 +5,10 @@ import com.github.cvazer.tryout.webrise.service.facade.LoginAndRegistrationFacad
 import com.github.cvazer.tryout.webrise.web.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/users")
@@ -14,10 +17,11 @@ public class UserController {
     private final LoginAndRegistrationFacade loginAndRegistrationFacade;
 
     @PostMapping
-    public void register(@Valid @RequestBody BasicCredentials rq) {
+    public ApiResponse<Void> register(@Valid @RequestBody BasicCredentials rq) {
         loginAndRegistrationFacade.register(rq);
+        return new ApiResponse<>();
     }
-    
+
     @PostMapping("/login")
     public ApiResponse<String> get(@Valid @RequestBody BasicCredentials rq) {
         return new ApiResponse<>(loginAndRegistrationFacade.login(rq));
