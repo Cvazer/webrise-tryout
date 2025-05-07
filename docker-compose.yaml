@@ -13,8 +13,6 @@ services:
 
   database:
     image: postgres:latest
-    ports:
-      - "5432:5432"
     container_name: webrise-tryout-yan-f-postgresql
     environment:
       POSTGRES_PASSWORD: postgres

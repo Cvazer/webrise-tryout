@@ -7,5 +7,9 @@
 
     <include file="scripts/07-05-2025-Yan-F-1-user-table.sql" relativeToChangelogFile="true"/>
     <include file="scripts/07-05-2025-Yan-F-2-basic-credentials-table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/07-05-2025-Yan-F-3-services-table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/07-05-2025-Yan-F-4-subscription-status-enums-creation.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/07-05-2025-Yan-F-5-subscriptions-table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/07-05-2025-Yan-F-6-services-test-data.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

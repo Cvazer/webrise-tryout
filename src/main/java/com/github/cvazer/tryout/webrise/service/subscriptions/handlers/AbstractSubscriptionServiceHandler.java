@@ -2,7 +2,7 @@ package com.github.cvazer.tryout.webrise.service.subscriptions.handlers;
 
 import com.github.cvazer.tryout.webrise.dao.entity.UserEntity;
 import com.github.cvazer.tryout.webrise.dao.repo.SubscriptionRepo;
-import com.github.cvazer.tryout.webrise.service.SubscriptionService;
+import com.github.cvazer.tryout.webrise.service.subscriptions.SubscriptionService;
 import com.github.cvazer.tryout.webrise.service.subscriptions.SubscriptionServiceHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +18,8 @@ import static com.github.cvazer.tryout.webrise.service.subscriptions.Subscriptio
 public abstract class AbstractSubscriptionServiceHandler implements SubscriptionServiceHandler {
     private final SubscriptionService subscriptionService;
     private final SubscriptionRepo subscriptionRepo;
+
+    public static final int DELAY = 5;
 
     @Override
     public void subscribe(UserEntity user) {
@@ -43,7 +45,7 @@ public abstract class AbstractSubscriptionServiceHandler implements Subscription
 
         //Симулирую запрос на API сервиса
         try {
-            Thread.sleep(10 * 1000);
+            Thread.sleep(30 * 1000);
         } catch (InterruptedException ignored) {
             //ignore
         }
@@ -56,7 +58,7 @@ public abstract class AbstractSubscriptionServiceHandler implements Subscription
                 )));
 
         sub.setStatus(SUBSCRIBED);
-        sub.setRenewDueDate(LocalDateTime.now().plusMinutes(1));
+        sub.setRenewDueDate(LocalDateTime.now().plusMinutes(DELAY));
         subscriptionRepo.save(sub);
     }
 
@@ -66,7 +68,7 @@ public abstract class AbstractSubscriptionServiceHandler implements Subscription
 
         //Симулирую запрос на API сервиса
         try {
-            Thread.sleep(10 * 1000);
+            Thread.sleep(30 * 1000);
         } catch (InterruptedException ignored) {
             //ignore
         }

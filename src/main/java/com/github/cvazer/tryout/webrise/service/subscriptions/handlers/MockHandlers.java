@@ -1,7 +1,7 @@
 package com.github.cvazer.tryout.webrise.service.subscriptions.handlers;
 
 import com.github.cvazer.tryout.webrise.dao.repo.SubscriptionRepo;
-import com.github.cvazer.tryout.webrise.service.SubscriptionService;
+import com.github.cvazer.tryout.webrise.service.subscriptions.SubscriptionService;
 import org.springframework.stereotype.Component;
 
 //Тут живут заглушки для хэндлеров
