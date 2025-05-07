@@ -1,7 +1,8 @@
-package com.github.cvazer.tryout.webrise.service.subscriptions;
+package com.github.cvazer.tryout.webrise.service;
 
 import com.github.cvazer.tryout.webrise.dao.entity.SubscriptionEntity;
 import com.github.cvazer.tryout.webrise.dao.repo.SubscriptionRepo;
+import com.github.cvazer.tryout.webrise.service.subscriptions.SubscriptionStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
