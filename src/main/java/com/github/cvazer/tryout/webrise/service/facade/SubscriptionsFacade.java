@@ -1,19 +1,22 @@
 package com.github.cvazer.tryout.webrise.service.facade;
 
-import com.github.cvazer.tryout.webrise.service.SubscriptionService;
-import com.github.cvazer.tryout.webrise.service.UserService;
+import com.github.cvazer.tryout.webrise.service.subscriptions.SubscriptionService;
+import com.github.cvazer.tryout.webrise.service.users.UserService;
 import com.github.cvazer.tryout.webrise.service.facade.exceptions.SubscriptionException;
 import com.github.cvazer.tryout.webrise.service.subscriptions.ServiceHandlerRegistry;
-import com.github.cvazer.tryout.webrise.web.ApiException;
-import com.github.cvazer.tryout.webrise.web.dto.SubscriptionDto;
 import com.github.cvazer.tryout.webrise.service.subscriptions.SubscriptionMapper;
+import com.github.cvazer.tryout.webrise.web.dto.SubscriptionDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.github.cvazer.tryout.webrise.service.subscriptions.SubscriptionStatus.WILL_NOT_RENEW;
+
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class SubscriptionsFacade {
