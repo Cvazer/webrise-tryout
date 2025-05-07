@@ -41,4 +41,16 @@ public class SubscriptionsFacade {
         subscriptionService.createSubscription(user, serviceId);
         handler.subscribe(user);
     }
+
+    @Transactional
+    public void unsubscribe(String serviceId) {
+        var user = userService.getCurrentUser();
+        subscriptionService.getActiveSubscription(user, serviceId).ifPresent(sub -> {
+            sub.setStatus(WILL_NOT_RENEW);
+            log.info(
+                    "User [{}:{}] has ended his subscription to [{}]. " +
+                            "It will be marked as canceled on the next watcher cycle",
+                    user.getId(), user.getDisplayName(), serviceId);
+        });
+    }
 }

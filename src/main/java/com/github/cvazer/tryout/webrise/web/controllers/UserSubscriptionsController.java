@@ -26,4 +26,10 @@ public class UserSubscriptionsController {
         subscriptionsFacade.subscribe(rq.serviceId());
         return new ApiResponse<>();
     }
+
+    @DeleteMapping("/{serviceId}")
+    public ApiResponse<Void> unsubscribe(@PathVariable String serviceId) {
+        subscriptionsFacade.unsubscribe(serviceId);
+        return new ApiResponse<>();
+    }
 }
