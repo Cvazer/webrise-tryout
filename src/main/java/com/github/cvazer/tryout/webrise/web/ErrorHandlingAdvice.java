@@ -10,10 +10,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ErrorHandlingAdvice {
 
+    @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(ApiException.class)
-    public ApiResponse<Void> fallbackHandler(ApiException e) {
+    public ApiResponse<Void> fallbackHandler(Exception e) {
         log.error(e.getMessage(), e);
+        return new ApiResponse<>(e);
+    }
+
+    @ExceptionHandler(ApiException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ApiResponse<Void> apiExceptionHandler(ApiException e) {
+        log.debug(e.getMessage(), e);
         return new ApiResponse<>(e);
     }
 
