@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableCaching
 @EnableScheduling
 @SpringBootApplication
-@PropertySource(value = "classpath:deploy.properties", ignoreResourceNotFound = true)
 public class Application {
 
     public static void main(String[] args) {
