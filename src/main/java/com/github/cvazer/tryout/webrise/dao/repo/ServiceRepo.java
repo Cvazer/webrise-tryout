@@ -11,9 +11,9 @@ import java.util.Set;
 @Repository
 public interface ServiceRepo extends JpaRepository<ServiceEntity, String> {
 
-    @Query("select e from ServiceEntity sub " +
-            "join ServiceEntity e on sub.id = e.id " +
-            "group by e.id " +
+    @Query("select e from SubscriptionEntity sub " +
+            "join ServiceEntity e on sub.service.id = e.id " +
+            "where sub.status = 'SUBSCRIBED' group by e.id " +
             "order by count(*) desc")
     Set<ServiceEntity> findTop(Limit limit);
 

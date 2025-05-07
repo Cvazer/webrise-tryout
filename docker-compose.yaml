@@ -21,8 +21,8 @@ services:
         ipv4_address: 100.20.20.1
 
   consul:
-    image: hashicorp/consul:1.19
-    container_name: webrise-tryout-consul
+    image: hashicorp/consul:latest
+    container_name: webrise-tryout-yan-f-consul
     ports:
       - "8500:8500"
     networks:
